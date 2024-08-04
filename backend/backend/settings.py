@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-l9*ibbs-&pj79=o_*jg!21tb4d!4)xt7vd)m1w8=x#d1os^!9e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['palhalim95.pythonanywhere.com', '127.0.0.1', 'iwtodo.onrender.com']
+ALLOWED_HOSTS = ['*']
 
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Application definition
 
 INSTALLED_APPS = [
@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-CSRF_TRUSTED_ORIGINS = ['https://palhalim95.pythonanywhere.com']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -133,12 +133,16 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000',
-     'https://iwtodo.vercel.app',
+CORS_ALLOWED_ORIGINS = [
+    'https://iwtodo.vercel.app',
+    'https://iwtodo-palhrzs-projects.vercel.app'
 ]
 
-CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.example\.com$",
+]
+
+CSRF_TRUSTED_ORIGINS = [
     'https://iwtodo.vercel.app',
     'https://iwtodo-palhrzs-projects.vercel.app'
 ]
