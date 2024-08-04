@@ -10,14 +10,17 @@ const Home = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {data} = await axios.post('/api/token/', { username, password })
-    localStorage.clear();
-    localStorage.setItem('access_token', data.access);
-    localStorage.setItem('refresh_token', data.refresh);
-    axios.defaults.headers.common['Authorization'] = 
-                                    `Bearer ${data['access']}`;
-    navigate('/todo');
-    // window.location.href = '/todo'
+    try {
+      const {data} = await axios.post('/api/token/', { username, password })
+      localStorage.clear();
+      localStorage.setItem('access_token', data.access);
+      localStorage.setItem('refresh_token', data.refresh);
+      axios.defaults.headers.common['Authorization'] = 
+                                      `Bearer ${data['access']}`;
+      navigate('/todo');
+    } catch (error) {
+      console.log('API error',error);
+    }
   };
 
   return (
