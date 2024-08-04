@@ -10,7 +10,7 @@ const Home = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {data} = await axios.post('/token/', { username, password })
+    const {data} = await axios.post('/api/token/', { username, password })
     localStorage.clear();
     localStorage.setItem('access_token', data.access);
     localStorage.setItem('refresh_token', data.refresh);
