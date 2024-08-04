@@ -4,13 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
-
+*.pyc
 # testing
 /coverage
 
 # production
 /build
-
+__pycache__/
 # misc
 .DS_Store
 .env.local
@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+/venv
+venv/
