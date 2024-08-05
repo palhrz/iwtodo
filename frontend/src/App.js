@@ -1,7 +1,5 @@
-// App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Navbar from './components/Navbar';
 import HomePage from './components/Home';
 import SignUpPage from './components/SignUp';
 import TodoApp from './components/ToDoApp'; // Assuming your existing Todo app component is now named TodoApp
