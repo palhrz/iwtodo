@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// import { config } from 'dotenv';
+const config = require('../config');
+// require('dotenv').config()
 
 const Home = () => {
   const [username, setUsername] = useState('');
@@ -11,7 +14,10 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.post('/api/token/', { username, password })
+      const url = process.env.URL;
+      console.log('A',url);
+      console.log('b',config.API_URL);
+      const {data} = await axios.post(config.API_URL+'/token/', { username, password })
       localStorage.clear();
       localStorage.setItem('access_token', data.access);
       localStorage.setItem('refresh_token', data.refresh);
